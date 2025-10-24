@@ -11,17 +11,22 @@ clean_csv_path = CSVEmailCleaner(csv_path, clean_csv_path).clean()
 
 # Langformers training configuration
 training_config = {
-    "max_length": 128,
-    "num_train_epochs": 5,
-    "learning_rate": 3e-5,
-    "per_device_train_batch_size": 16,   # safer for 8GB VRAM
+    "max_length": 256,
+    "num_train_epochs": 7,
+    "learning_rate": 2e-5,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "lr_scheduler_type": "cosine",
+    "per_device_train_batch_size": 16,
     "per_device_eval_batch_size": 32,
-    "fp16": True,                        # mixed precision
-    "gradient_accumulation_steps": 2,    # effective batch size 32
+    "gradient_accumulation_steps": 2,
+    "fp16": True,
     "eval_strategy": "steps",
+    "early_stopping_patience": 3,
+    "load_best_model_at_end": True,
+    "metric_for_best_model": "f1_macro",
     "logging_steps": 50,
     "save_steps": 100,
-    "early_stopping_patience": 3,
     "report_to": ["tensorboard"]
 }
 
