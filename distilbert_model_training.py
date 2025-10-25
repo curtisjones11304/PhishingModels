@@ -32,14 +32,14 @@ training_config = {
 
 print("Training Model with Langformers...")
 
-# Create classifier using DistilBERT
 model = tasks.create_classifier(
     model_name="distilbert-base-uncased",
     csv_path=clean_csv_path,
-    text_column="text",       # adjust column names
+    text_column="text",
     label_column="label",
     training_config=training_config
 )
+
 
 # Start fine-tuning. This will run training and save the best model to disk.
 # Training progress will be printed and logged according to training_config.
@@ -48,6 +48,3 @@ model.train()
 # After training finishes, the trained model directory will be available (see logs/output).
 # You can also load it for inference with tasks.load_classifier()
 print("Training finished. Use tasks.load_classifier('/path/to/saved/model') to load and predict.")
-
-# Start training
-model.train()
