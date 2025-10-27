@@ -7,8 +7,8 @@ from langformers import tasks
 option = int(input("1. RoBERTa"
       "2. distilBERT"))
 classifier = None
-if option == 1: classifier = tasks.load_classifier('./langformers-classifier-d20251023-t200514\\best_model')
-elif option == 2: classifier = tasks.load_classifier('./langformers-classifier-d20251023-t220120\\best_model')
+if option == 1: classifier = tasks.load_classifier('./langformers-classifier-d20251023-t200514\\best_model') # roberta
+elif option == 2: classifier = tasks.load_classifier('./langformers-classifier-d20251024-t212115\\best_model') #distilbert
 def main():
     print("=== AI-Powered Phishing Email Confidence Tester ===\n")
 
